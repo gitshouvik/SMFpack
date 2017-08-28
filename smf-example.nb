@@ -1,0 +1,237 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6912,        229]
+NotebookOptionsPosition[      5501,        175]
+NotebookOutlinePosition[      6171,        201]
+CellTagsIndexPosition[      6043,        195]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["An example usage of SMFpack", "Chapter",
+ CellChangeTimes->{{3.7129284942815123`*^9, 3.712928514701708*^9}, 
+   3.7129286721616364`*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Loading package", "Subchapter",
+ CellChangeTimes->{{3.712928410564558*^9, 3.712928414040032*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.7129282082887278`*^9, 3.71292822585005*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Get", "[", "\"\<SMFpack.m\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.7129282284647007`*^9, 3.71292824129011*^9}, {
+  3.712928517409498*^9, 3.712928533075061*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"SMFpack \\n\\nA Mathematica package for implementing Siegel Modular \
+forms\\nAuthor : Shouvik Datta\\nThe definitions used are in Appendix A of \
+https://arxiv.org/abs/0710.2129 \\n\"\>"}
+   },
+   DefaultBaseStyle->"Column",
+   GridBoxAlignment->{"Columns" -> {{Left}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Column"]], "Output",
+ CellChangeTimes->{3.7129282429051237`*^9, 3.7129285337978497`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Chi10"}]], "Input",
+ CellChangeTimes->{{3.712928249621613*^9, 3.712928260618579*^9}}],
+
+Cell[BoxData[
+ StyleBox["\<\"Siegel Cusp form of weight 10 : \!\(\*SubscriptBox[\(\[Chi]\), \
+\(10\)]\). Takes the period matrix (\[CapitalOmega]) as its argument.\"\>", 
+  "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.712928261667254*^9},
+ CellTags->"Info143712935461-8006418"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Psi4"}]], "Input",
+ CellChangeTimes->{{3.712928276532761*^9, 3.71292827855404*^9}}],
+
+Cell[BoxData[
+ StyleBox["\<\"Siegel Eisenstein series of weight 4 : \!\(\*SubscriptBox[\(\
+\[Psi]\), \(4\)]\). Takes the period matrix (\[CapitalOmega]) as its \
+argument.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.712939657475853*^9},
+ CellTags->"Info243712946857-8006418"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Evaluating the genus 2 partition function of the Monster CFT", \
+"Subchapter",
+ CellChangeTimes->{{3.712928291265716*^9, 3.712928347649255*^9}}],
+
+Cell["\<\
+(specifically for the the third Renyi entropy of two intervals, see Section 2 \
+of arXiv:1705.05855)\
+\>", "Text",
+ CellChangeTimes->{{3.712928351150083*^9, 3.7129283742658157`*^9}, {
+  3.712928432933242*^9, 3.7129284424127903`*^9}, {3.712928476622983*^9, 
+  3.712928483875757*^9}}],
+
+Cell["\<\
+Genus-2 partition function of the Monster CFT from arXiv:0707.3437\
+\>", "Text",
+ CellChangeTimes->{{3.7129394107033777`*^9, 3.71293943324238*^9}, {
+  3.7129395443617992`*^9, 3.7129395494764023`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Z", "[", "W_", "]"}], ":=", 
+   RowBox[{
+    FractionBox["1", 
+     RowBox[{"Chi10", "[", "W", "]"}]], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FractionBox["41", "4608"], 
+       SuperscriptBox[
+        RowBox[{"Psi4", "[", "W", "]"}], "3"]}], "+", 
+      RowBox[{
+       FractionBox["31", "1152"], 
+       SuperscriptBox[
+        RowBox[{"Psi6", "[", "W", "]"}], "2"]}], "-", 
+      RowBox[{
+       FractionBox["3813", "2048"], 
+       RowBox[{"Chi12", "[", "W", "]"}]}]}], ")"}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"periodMatrix", "[", "x_", "]"}], ":=", 
+   RowBox[{
+    FractionBox["1", 
+     SqrtBox["3"]], 
+    RowBox[{"(", GridBox[{
+       {"2", 
+        RowBox[{"-", "1"}]},
+       {
+        RowBox[{"-", "1"}], "2"}
+      }], ")"}], "*", 
+    RowBox[{"(", 
+     FractionBox[
+      RowBox[{"\[ImaginaryI]", " ", 
+       RowBox[{"Hypergeometric2F1", "[", 
+        RowBox[{
+         FractionBox["1", "3"], ",", 
+         FractionBox["2", "3"], ",", "1", ",", 
+         RowBox[{"1", "-", "x"}]}], "]"}]}], 
+      RowBox[{" ", 
+       RowBox[{"Hypergeometric2F1", "[", 
+        RowBox[{
+         FractionBox["1", "3"], ",", 
+         FractionBox["2", "3"], ",", "1", ",", "x"}], "]"}]}]], ")"}]}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.7085865755616503`*^9, 3.708586709859024*^9}, {
+   3.7086013595582952`*^9, 3.7086013629860907`*^9}, 3.708703639832756*^9, {
+   3.708703706026*^9, 3.708703708370514*^9}, {3.708861989927582*^9, 
+   3.708861992727112*^9}, {3.7129283114993687`*^9, 3.712928311923493*^9}, {
+   3.71292854100646*^9, 3.7129285563563547`*^9}},
+ ExpressionUUID -> "e66fda35-604e-41f6-8759-6a97fafa859b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Z", "[", 
+  RowBox[{"periodMatrix", "[", ".3", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7129283773257008`*^9, 3.712928397025045*^9}}],
+
+Cell[BoxData[
+ RowBox[{"29.72907268917609`", "\[VeryThinSpace]", "+", 
+  RowBox[{"7.167971663257251`*^-29", " ", "\[ImaginaryI]"}]}]], "Output",
+ CellChangeTimes->{{3.712928381134562*^9, 3.712928397382251*^9}, 
+   3.71292856069753*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 751},
+WindowMargins->{{Automatic, 159}, {Automatic, 30}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+23, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info143712935461-8006418"->{
+  Cell[1894, 63, 285, 5, 44, "Print",
+   CellTags->"Info143712935461-8006418"]},
+ "Info243712946857-8006418"->{
+  Cell[2331, 77, 290, 5, 43, "Print",
+   CellTags->"Info243712946857-8006418"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info143712935461-8006418", 5827, 186},
+ {"Info243712946857-8006418", 5939, 189}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 142, 2, 65, "Chapter"],
+Cell[CellGroupData[{
+Cell[747, 28, 103, 1, 63, "Subchapter"],
+Cell[853, 31, 190, 4, 32, "Input"],
+Cell[CellGroupData[{
+Cell[1068, 39, 188, 3, 32, "Input"],
+Cell[1259, 44, 481, 10, 139, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1777, 59, 114, 2, 32, "Input"],
+Cell[1894, 63, 285, 5, 44, "Print",
+ CellTags->"Info143712935461-8006418"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2216, 73, 112, 2, 32, "Input"],
+Cell[2331, 77, 290, 5, 43, "Print",
+ CellTags->"Info243712946857-8006418"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2670, 88, 150, 2, 63, "Subchapter"],
+Cell[2823, 92, 292, 6, 30, "Text"],
+Cell[3118, 100, 210, 4, 30, "Text"],
+Cell[3331, 106, 1705, 51, 109, "Input"],
+Cell[CellGroupData[{
+Cell[5061, 161, 162, 3, 32, "Input"],
+Cell[5226, 166, 235, 4, 32, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
